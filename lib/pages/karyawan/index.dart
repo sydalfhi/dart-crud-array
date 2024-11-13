@@ -1,10 +1,10 @@
 // ignore_for_file: prefer_const_constructors, use_build_context_synchronously
 
 import 'package:flutter/material.dart';
-import 'package:tes_flutter_wireles/components/fragments/bottom_navigation_bar.dart';
-import 'package:tes_flutter_wireles/components/fragments/popup_action_botton_widget.dart';
-import 'package:tes_flutter_wireles/models/karyawan.dart';
-import 'package:tes_flutter_wireles/pages/karyawan/form.dart';
+import 'package:crud_array/components/fragments/bottom_navigation_bar.dart';
+import 'package:crud_array/components/fragments/popup_action_botton_widget.dart';
+import 'package:crud_array/models/karyawan.dart';
+import 'package:crud_array/pages/karyawan/form.dart';
 
 class KaryawanPage extends StatefulWidget {
   const KaryawanPage({super.key});

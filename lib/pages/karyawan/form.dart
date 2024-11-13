@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:tes_flutter_wireles/databse/karyawan.dart';
-import 'package:tes_flutter_wireles/models/karyawan.dart';
+import 'package:crud_array/databse/karyawan.dart';
+import 'package:crud_array/models/karyawan.dart';
 
 class CreateKaryawanPage extends StatefulWidget {
   final String? mode;

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tes_flutter_wireles/models/karyawan.dart';
+import 'package:crud_array/models/karyawan.dart';
 
 class ActionPopupButtonWidget extends StatefulWidget {
   final BuildContext context;

@@ -1,8 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
-import 'package:tes_flutter_wireles/pages/home/index.dart';
-import 'package:tes_flutter_wireles/pages/karyawan/form.dart';
-import 'package:tes_flutter_wireles/pages/karyawan/index.dart';
+import 'package:crud_array/pages/home/index.dart';
+import 'package:crud_array/pages/karyawan/form.dart';
+import 'package:crud_array/pages/karyawan/index.dart';
 
 void main() {
   runApp(const MyApp());

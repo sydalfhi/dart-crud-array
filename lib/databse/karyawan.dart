@@ -1,4 +1,4 @@
-import 'package:tes_flutter_wireles/models/karyawan.dart';
+import 'package:crud_array/models/karyawan.dart';
 
 class KaryawanDatabase {
   List<Karyawan> karyawanData = [];

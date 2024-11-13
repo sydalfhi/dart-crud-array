@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tes_flutter_wireles/pages/home/index.dart';
-import 'package:tes_flutter_wireles/pages/karyawan/index.dart';
+import 'package:crud_array/pages/home/index.dart';
+import 'package:crud_array/pages/karyawan/index.dart';
 
 class BottomNavigationBarWidget extends StatelessWidget {
   const BottomNavigationBarWidget({super.key});
