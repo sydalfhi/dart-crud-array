@@ -116,6 +116,6 @@ class Karyawan {
   }
 
   String get jenisKelaminLabel {
-    return jenisKelamin == 0 ? 'Perempuan' : 'Laki-laki';
+    return jenisKelamin == 1 ? 'Laki-laki' : 'Perempuan';
   }
 }

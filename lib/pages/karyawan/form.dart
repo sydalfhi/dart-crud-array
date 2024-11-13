@@ -1,14 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:tes_flutter_wireles/databse/karyawan.dart';
+import 'package:tes_flutter_wireles/models/karyawan.dart';
 
-class UpdateKaryawanPage extends StatefulWidget {
-  const UpdateKaryawanPage({super.key});
+class CreateKaryawanPage extends StatefulWidget {
+  final String? mode;
+  final Karyawan? karyawanData;
+
+  const CreateKaryawanPage(
+      {super.key, this.mode = 'create', this.karyawanData});
 
   @override
-  State<UpdateKaryawanPage> createState() => _UpdateKaryawanPageState();
+  State<CreateKaryawanPage> createState() => _CreateKaryawanPageState();
 }
 
-class _UpdateKaryawanPageState extends State<UpdateKaryawanPage> {
+class _CreateKaryawanPageState extends State<CreateKaryawanPage> {
+  final KaryawanDatabase _karyawanDatabase = KaryawanDatabase();
   final _formKey = GlobalKey<FormState>();
 
   final TextEditingController _kodeKaryawanController = TextEditingController();
@@ -18,13 +25,25 @@ class _UpdateKaryawanPageState extends State<UpdateKaryawanPage> {
   final TextEditingController _nomorHpController = TextEditingController();
   final TextEditingController _alamatController = TextEditingController();
 
-  int _jenisKelamin = 1;
+  int _jenisKelamin = 2;
+  @override
+  void initState() {
+    super.initState();
+    if (widget.karyawanData != null) {
+      _kodeKaryawanController.text = widget.karyawanData!.kodeKaryawan;
+      _nomorIdentitasController.text = widget.karyawanData!.nomorIdentitas;
+      _emailController.text = widget.karyawanData!.email;
+      _nomorHpController.text = widget.karyawanData!.nomorHp;
+      _alamatController.text = widget.karyawanData!.alamat;
+      _jenisKelamin = widget.karyawanData!.jenisKelamin;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Tambah Karyawan'),
+        title: Text("${widget.mode == 'create' ? 'Tambah' : 'Edit'} Karyawan"),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
@@ -141,10 +160,10 @@ class _UpdateKaryawanPageState extends State<UpdateKaryawanPage> {
               const SizedBox(height: 24),
               ElevatedButton(
                 onPressed: _submitForm,
-                child: const Text('Simpan'),
                 style: ElevatedButton.styleFrom(
                   padding: const EdgeInsets.symmetric(vertical: 16),
                 ),
+                child: const Text('Simpan'),
               ),
             ],
           ),
@@ -153,25 +172,47 @@ class _UpdateKaryawanPageState extends State<UpdateKaryawanPage> {
     );
   }
 
+  _addnewKaryawan() async {
+    try {
+      final karyawan = Karyawan(
+        idKaryawan: DateTime.now().millisecondsSinceEpoch,
+        kodeKaryawan: _kodeKaryawanController.text,
+        nomorIdentitas: _nomorIdentitasController.text,
+        jenisKelamin: _jenisKelamin,
+        email: _emailController.text,
+        nomorHp: _nomorHpController.text,
+        alamat: _alamatController.text,
+      );
+      Navigator.pop(context, karyawan);
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text('Terjadi kesalahan: $e'),
+      ));
+    }
+  }
+
+  _updateKaryawan() async {
+    try {
+      final karyawan = Karyawan(
+        idKaryawan: widget.karyawanData!.idKaryawan,
+        kodeKaryawan: _kodeKaryawanController.text,
+        nomorIdentitas: _nomorIdentitasController.text,
+        jenisKelamin: _jenisKelamin,
+        email: _emailController.text,
+        nomorHp: _nomorHpController.text,
+        alamat: _alamatController.text,
+      );
+      Navigator.pop(context, karyawan);
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text('Terjadi kesalahan: $e'),
+      ));
+    }
+  }
+
   void _submitForm() {
     if (_formKey.currentState!.validate()) {
-      // Proses penyimpanan data
-      final karyawanBaru = {
-        'kode_karyawan': _kodeKaryawanController.text,
-        'nomor_identitas': _nomorIdentitasController.text,
-        'jenis_kelamin': _jenisKelamin,
-        'email': _emailController.text,
-        'nomor_hp': _nomorHpController.text,
-        'alamat': _alamatController.text,
-      };
-
-      // Contoh print data (nanti diganti dengan proses penyimpanan)
-      print(karyawanBaru);
-
-      // Bisa tambahkan logic penyimpanan ke database atau API di sini
-
-      // Kembali ke halaman sebelumnya
-      Navigator.pop(context);
+      widget.karyawanData == null ? _addnewKaryawan() : _updateKaryawan();
     }
   }
 

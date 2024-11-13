@@ -1,10 +1,8 @@
 // ignore_for_file: prefer_const_constructors
-
-import 'package:crud_array/screen/home/index.dart';
-import 'package:crud_array/screen/karyawan/create.dart';
-import 'package:crud_array/screen/karyawan/index.dart';
-import 'package:crud_array/screen/karyawan/update.dart';
 import 'package:flutter/material.dart';
+import 'package:tes_flutter_wireles/pages/home/index.dart';
+import 'package:tes_flutter_wireles/pages/karyawan/form.dart';
+import 'package:tes_flutter_wireles/pages/karyawan/index.dart';
 
 void main() {
   runApp(const MyApp());
@@ -61,7 +59,6 @@ class MyApp extends StatelessWidget {
         '/': (context) => HomePage(),
         '/karyawan': (context) => KaryawanPage(),
         '/karyawan/create': (context) => CreateKaryawanPage(),
-        '/karyawan/update': (context) => UpdateKaryawanPage(),
       },
     );
   }

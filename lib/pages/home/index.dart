@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:crud_array/components/fragments/bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:tes_flutter_wireles/components/fragments/bottom_navigation_bar.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
